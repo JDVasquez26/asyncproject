@@ -21,7 +21,7 @@ const Plant = dbConnection.define('plants', {
             isUrl: true,
           },
       },
-      purchased: {
+      status: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: false

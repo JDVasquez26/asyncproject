@@ -28,22 +28,31 @@ router.get("/:id", async (req, res, next) => {
 });
 
 // //POST localhost:3001/api/sites
-router.post("/", async (req, res, next) => {
-  try {
-    const site = 
-      await Site.findOrCreate({
-        where: {
-          name: req.body.name,
-        },
-      })
-    const currentPlant = await Plant.findById(req.body.plantId);
-    console.log("magic methods:" , Object.keys(currentPlant.__proto__));
-    await currentPlant.addSite(site[0]);
-    res.json(site[0]);
-  } catch (error) {
-    next(error);
+// router.post("/", async (req, res, next) => {
+//   try {
+//     const site = 
+//       await Site.findOrCreate({
+//         where: {
+//           name: req.body.name,
+//         },
+//       })
+//     const currentPlant = await Plant.findById(req.body.plantId);
+//     console.log("magic methods:" , Object.keys(currentPlant.__proto__));
+//     await currentPlant.addSite(site[0]);
+//     res.json(site[0]);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
+
+router.post('/', async (req, res, next) => {
+  try{
+    res.status(201).send(await Site.create(req.body));
+  }catch(error){
+    next(error)
   }
-});
+})
 
 // // PUT localhost:3001/api/sites/:id
 // router.put('/:id', async (req, res, next) => {
