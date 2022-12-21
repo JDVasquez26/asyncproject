@@ -4,26 +4,26 @@ keep track of what plants they want to purchase.
 
 features:
 - adding and removing plants from their wishlist
-- creating and attaching plant families to each plant
+- creating and attaching plant sites to each plant
 - Marking listed plants as purchased
-- Filtering the list by purchased, family
+- Filtering the list by purchased, site
 
 
 Components:
 - A Node.js program that will use Express to listen for HTTP messages.
-- Within aforement server program, a Postgres database will be used to store plants and plants families
-- Sequelize will be used to define and interact with plants and plants familyies tables
+- Within aforement server program, a Postgres database will be used to store plants and sites
+- Sequelize will be used to define and interact with plants and sites tables
 - The server will serve up HTTP documents to render the user-facing portion of the application
 - Some CSS and front-end Javascript will be used to improve user expirence in the browser
 
 Proposed task order (subject to change):
-- set up initial boilerplate for project(git setup, insalling libraries, establishing basic routes, creating database)
-- Defining models with Sequelize for plants and plant families, and relating them
-- Defining a route to send back an HTML page with a form to create a plant family
+- set up initial boilerplate for project(git setup, installing libraries, establishing basic routes, creating database)
+- Defining models with Sequelize for plants and plant sites, and relating them
+- Defining a route to send back an HTML page with a form to create a new site
 - Defining a route to send back an HTML page with a form to create a new plant
-- Defining a route to send back an HTML page with the list of movies in the database
+- Defining a route to send back an HTML page with the list of plants in the database
 - Adding functinality for setting a plant to "purchased" and "Not-purchased"
-- Updating the movies listing routes to filter by plant family and "not-purchased"
+- Updating the plants listing routes to filter by plant site and "not-purchased"
 
 
 Set Up: https://www.freecodecamp.org/news/how-to-create-a-react-app-with-a-node-backend-the-complete-guide/
@@ -143,8 +143,28 @@ npm install <dev_dependencies> --save-dev
 2nd) Building proxy server
 create api and db folders, and app.js!
 
-- Update scripts as per TodoList App
+- Update scripts as per TodoList App: a lil confused about these
 
 (It's time to push the set up to github)
 :https://github.com/JDVasquez26/git-github-overview-readme
 
+- create database for sequelize to connect to:
+createdb plantwishlist
+
+- connect to database: dbconn.js
+
+-Plan modules before sync and seeding db
+- Plant model
+    -name(not null);
+    -purched(not null, boolean, default false);
+    -imgUrl
+    
+- Site model
+    -name (not null)
+
+Associations:
+Many-Many: 
+Plants(movies) & Sites(genre) - have many to many relationship
+- Plants can go in more than one site - site can have many plants
+belongsToMany - Sequelize will create that join in between table
+Plants can have more than site (because it can be in more than one site)

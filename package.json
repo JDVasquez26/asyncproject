@@ -1,8 +1,8 @@
 {
   "name": "asyncproject",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "selfhosted plant wishlist website",
+  "main": "server/index.js",
   "scripts": {
     "postinstall": "npm install --prefix client",
     "start:dev": "(npm run start --prefix client) & nodemon server",

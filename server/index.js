@@ -1,16 +1,20 @@
-const express = require("express");
-
 const PORT = process.env.PORT || 3001;
+const app = require('./app');
+const { dbConnection } = require('./db/index');
 
-const app = express();
-
-
-app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
-  });
+const init = async () => {
+    try {
+        await dbConnection.sync().then(() => {
+            app.listen(PORT, () =>
+              console.log(`
+                Listening on Port ${PORT}
+                http://localhost:${PORT}/
+                `)
+            );
+          });
+      } catch (err) {
+        console.log(`There was an error starting up!`, err);
+      }
+  };
   
-
-
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
-});
+  init();
