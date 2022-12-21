@@ -7,14 +7,14 @@ const seed = async() => {
    
     //Plants
     await Plant.create({
-       name: "Rubber Plant",
-       imageUrl:"https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/71LgKqOVONL._AC_SX466_.jpg",
-       amazonLink: "",
+       name: "Spider Plant",
+       imageUrl:"https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/71OpsoutL7L._AC_SX466_.jpg",
+       amazonLink: "https://www.amazon.com/Succulents-Bonnie-Spider-Naturally-Purifying/dp/B005J66JMI?ref_=ast_sto_dp",
        purchased: true,
     });
    
     await Plant.create({
-       name:"Sunset Jade Plant",
+       name:"Jade Plant",
        imageUrl:"https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61GzpzR5hBL._AC_SX466_.jpg",
        amazonLink:"https://www.amazon.com/Sunset-Jade-Plant-Crassula-House/dp/B0044FQDRG?ref_=ast_sto_dp",
        purchased: true,
@@ -24,14 +24,14 @@ const seed = async() => {
        name: "String of Pearls",
        imageUrl:"https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51azht3fisL._AC_SX466_.jpg",
        amazonLink:"https://www.amazon.com/String-Pearls-Senecio-rowleyanus-Succulent/dp/B07P1CKKT3?ref_=ast_sto_dp",
-       purchased: false
+       purchased: false,
     });
    
    
    
     //Sites
     await Site.create({
-       name:"Bedroom SouthWest Window",
+       name:"Bedroom",
      
     }),
     await Site.create({
@@ -39,11 +39,18 @@ const seed = async() => {
        
     })
     await Site.create({
-       name: "Living Room SouthEast Window",
+       name: "Living Room",
        
     })
-   
-    db.close();
+    await Site.create({
+        name: "Kitchen",
+        
+     })
+
+//Magic Methods?
+
+
+    dbConnection.close();
     console.log(`
       Seeding successful
     `);
@@ -51,7 +58,7 @@ const seed = async() => {
    };
    
    seed().catch((err) => {
-    db.close();
+    dbConnection.close();
     console.log(`
     
         Error seeding:

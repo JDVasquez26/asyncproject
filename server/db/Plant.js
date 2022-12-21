@@ -16,7 +16,7 @@ const Plant = dbConnection.define('plants', {
       },
       amazonLink: {
         type: Sequelize.STRING(1000),
-        allowNull: true,
+        // allowNull: true,
         validate: {
             isUrl: true,
           },
